@@ -15,11 +15,11 @@ public class Employer extends AbstractEntity {
     @Size(max = 100, message = "Location must be under 100 characters.")
     public String location;
 
-    @OneToMany
+    @OneToMany // Data Table relationship , employer can have multiple jobs
     @JoinColumn(name = "employer_id")
-    private final List<Job> jobs = new ArrayList<>();
+    private final List<Job> jobs = new ArrayList<>(); // list of all items in a given job
 
-    public Employer() {
+    public Employer() { // Default Constructor?
     }
 
     public Employer(String location) {

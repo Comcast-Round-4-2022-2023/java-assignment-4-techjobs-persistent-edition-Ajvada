@@ -22,13 +22,13 @@ import java.util.Optional;
 @Controller
 public class HomeController {
 
-    @Autowired
+    @Autowired // dataBase
     private EmployerRepository employerRepository;
 
-    @Autowired
+    @Autowired // dataBase
     private SkillRepository skillRepository;
 
-    @Autowired
+    @Autowired // dataBase
     private JobRepository jobRepository;
 
     @RequestMapping("")
@@ -56,7 +56,7 @@ public class HomeController {
         return "add";
     }
 
-    @PostMapping("add")
+    @PostMapping("add") //Adding New Job
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
                                     Errors errors, Model model, @RequestParam int employerId, @RequestParam List<Integer> skills) {
 

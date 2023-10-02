@@ -16,11 +16,11 @@ import java.util.Optional;
 @RequestMapping("employers")
 public class EmployerController {
 
-    @Autowired
+    @Autowired // to use the methods provided by EmployerRepository for database operations
     private EmployerRepository employerRepository;
 
     @GetMapping("")
-    public String index(Model model) {
+    public String index(Model model) {  // full list of employers
         model.addAttribute("title", "All Employers");
         List employers = (List<Employer>) employerRepository.findAll();
         model.addAttribute("employers", employers );
@@ -37,7 +37,7 @@ public class EmployerController {
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                          Errors errors, Model model) {
 
-        if (errors.hasErrors()) {
+        if (errors.hasErrors()) { // binds form data to the newEmployer object and validates it.
             model.addAttribute("title", "Add Employer");
             return "employers/add";
         }
@@ -45,7 +45,7 @@ public class EmployerController {
         return "redirect:";
     }
 
-    @GetMapping("view/{employerId}")
+    @GetMapping("view/{employerId}") // gets employer with the specified employerId from the database
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
         Optional<Employer> optEmployer = employerRepository.findById(employerId);

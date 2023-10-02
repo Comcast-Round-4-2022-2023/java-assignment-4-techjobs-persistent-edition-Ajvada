@@ -49,3 +49,5 @@ public abstract class AbstractEntity {
     }
 
 }
+
+//class to dry code out , holds fields used my multiple classes
